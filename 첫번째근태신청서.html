@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>근태 관리 게시판</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 기본 스타일 */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0e0e10;
+            color: #f0f0f5;
+            overflow-x: hidden;
+        }
+        .custom-attendance-container {
+            max-width: 375px; /* 아이폰 X 화면 너비 */
+            margin: auto;
+            padding: 20px;
+            background-color: #1c1c1f;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .form-title {
+            font-size: 1.8rem; /* 크기 조절 */
+            color: #ffaa00;
+            margin-bottom: 15px;
+        }
+        .search-filter, .button-container {
+            display: flex;
+            justify-content: space-between; /* 가로 정렬 */
+            margin-bottom: 10px;
+        }
+        select, button.btn {
+            flex: 1; /* 같은 크기로 조절 */
+            margin: 0 5px;
+            padding: 8px;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            border: none;
+            border-radius: 4px;
+        }
+        .attendance-table {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+            background-color: #26262b;
+            color: #f0f0f5;
+        }
+        .attendance-table th, .attendance-table td {
+            padding: 8px;
+            border: 1px solid #2a2a31;
+            text-align: center;
+        }
+        .pagination {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .pagination button {
+            background-color: #ffaa00;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-attendance-container">
+        <div class="form-title">근태 관리 게시판</div>
+        <div class="search-filter">
+            <select id="departmentFilter">
+                <option value="">부서 선택</option>
+                <option value="도매1팀">도매1팀</option>
+            </select>
+            <select id="statusFilter">
+                <option value="">상태 선택</option>
+                <option value="승인 대기">승인 대기</option>
+            </select>
+        </div>
+        <div class="button-container">
+            <button class="btn" onclick="location.href='이메일전송.html';">이메일 전송</button>
+            <button class="btn" onclick="location.href='두번째근태신청서.html';">작성</button>
+        </div>
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selectAll"></th>
+                    <th>No</th>
+                    <th>이름</th>
+                    <th>직급</th>
+                    <th>부서</th>
+                    <th>날짜</th>
+                    <th>상태</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 데이터 동적 삽입 -->
+            </tbody>
+        </table>
+        <div class="pagination">
+            <button>이전</button>
+            <span id="currentPage">1</span>/<span id="totalPages">1</span>
+            <button>다음</button>
+        </div>
+    </div>
+</body>
+</html>
